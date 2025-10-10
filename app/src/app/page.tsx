@@ -1,103 +1,177 @@
-import Image from "next/image";
 
-export default function Home() {
+import React from 'react';
+import { Lightbulb, Code, Zap, Globe, Cpu, Users, Layers, TrendingUp, BookOpen, MessageSquare, ArrowUpRight } from 'lucide-react';
+import Header from '../components/orgs/Header';
+import Footer from '../components/orgs/Footer';
+import ProjectCard from '../components/molcs/ProjectCard';
+import SkillTag from '../components/atms/SkillTag';
+import Seo from '../components/atms/Seo';
+
+// --- データ定義 ---
+const SKILLS = [
+  { category: 'Frontend', icon: Code, tags: ['Next.js', 'TypeScript', 'React', 'Tailwind CSS', 'NextUI', 'Shadcn'] },
+  { category: 'Backend', icon: Layers, tags: ['Node.js', 'Python', 'FastAPI', 'Django', 'Bun'] },
+  { category: 'Database', icon: Cpu, tags: ['MongoDB', 'PostgreSQL', 'Supabase'] },
+  { category: 'DevOps/Infra', icon: Globe, tags: ['Vercel', 'Raspberry Pi'] },
+  { category: 'API/Bot', icon: MessageSquare, tags: ['LINE Messaging API', 'Discord.js', 'Discord.py'] },
+  { category: 'AI/Auth', icon: Zap, tags: ['Gemini API', 'NextAuth'] },
+];
+
+const PROJECTS = [
+  {
+    title: 'AI連携型 在庫・売上管理Webアプリ',
+    subtitle: '文化祭運営のDXを実現',
+    description: 'Next.jsとMongoDBを使い、模擬店向けに在庫管理とリアルタイム売上記録システムを開発。特に、売上データからGemini等のAIを活用して自動で売上分析・予測を行う斬新な機能を実装し、データドリブンな意思決定を可能にしました。',
+    tech: ['Next.js', 'Node.js', 'TypeScript', 'MongoDB', 'Gemini API'],
+    icon: TrendingUp
+  },
+  {
+    title: '若者向け情報共有プラットフォーム (LINE LIFF & Bot)',
+    subtitle: '学生生活に必要な情報を一元管理',
+    description: '時間割、課題、プリント配布情報などを共有するためのWebアプリ（LIFF）と、LINEメッセージングチャットボットを開発。日常使いのLINE上でシームレスな情報共有を実現し、若者の情報接触実態に合わせたソリューションを提供しました。',
+    tech: ['LINE LIFF', 'LINE Messaging API', 'Node.js', 'PostgreSQL'],
+    icon: Users
+  },
+  {
+    title: '多機能Discordコミュニティボット',
+    subtitle: '総導入サーバー数100を突破したコミュニティ管理ツール',
+    description: 'サーバー運営の効率化、VCチャットの文字起こし（Text to Speech）、天気情報やHypixel APIなど多数のWeb API連携機能を開発。コミュニティのリアルなニーズに応え、総導入サーバー数100以上を達成しました。',
+    tech: ['Discord.js', 'Discord.py', 'Python', 'FastAPI', 'Web API連携'],
+    icon: MessageSquare
+  },
+  {
+    title: '生成AI英語学習支援Webアプリ',
+    subtitle: '最新AI技術を活用した学習支援',
+    description: '生成AIを用いて英語長文の読解問題生成や、効率的な英単語の暗記学習機能を持つウェブアプリケーションを開発。教育分野におけるAI活用と、モダンなUI/UX設計を両立させました。',
+    tech: ['Next.js', 'Python', 'Django', 'AI-Gen', 'NextAuth'],
+    icon: BookOpen
+  },
+];
+
+const CATCHPHRASE = "若者の「今」をコード化し、未来を駆動するフルスタックデベロッパー";
+
+const Home: React.FC = () => {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <Seo />
+      <div className="min-h-screen bg-gray-950 text-gray-50 font-sans antialiased">
+        <Header />
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
+          {/* ヒーローセクション */}
+          <section id="hero" className="text-center mb-24 md:mb-36 pt-16">
+            <div className="inline-block bg-cyan-900/30 border border-cyan-700/50 rounded-full px-6 py-2 mb-4 text-xs font-mono text-cyan-400">
+              Next.js / Python / AI Integration
+            </div>
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-500">
+              デジタルの未来を、今、形にする。
+            </h1>
+            <p className="text-xl md:text-3xl font-medium text-gray-200 tracking-wide font-mono mb-10 [text-shadow:0_0_8px_rgba(0,255,255,0.4)]">
+              {CATCHPHRASE}
+            </p>
+            <a
+              href="#連絡先"
+              className="inline-flex items-center justify-center px-8 py-3 text-lg font-bold text-gray-900 bg-cyan-400 rounded-full shadow-lg shadow-cyan-500/50 transition duration-300 transform hover:scale-105 hover:bg-cyan-300"
+            >
+              ご相談はこちら
+              <ArrowUpRight className="w-5 h-5 ml-2" />
+            </a>
+          </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          {/* --- 実績セクション --- */}
+          <section id="実績" className="mb-24 md:mb-36">
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-cyan-400 tracking-tight relative after:content-[''] after:block after:w-16 after:h-1 after:bg-cyan-500 after:mx-auto after:mt-3 after:rounded-full">
+              プロジェクト実績 (PROJECTS)
+            </h2>
+            <div className="relative">
+              {PROJECTS.map((project, index) => (
+                <ProjectCard key={index} project={project} index={index} />
+              ))}
+            </div>
+          </section>
+
+          {/* --- スキルマトリックスセクション --- */}
+          <section id="スキル" className="mb-24 md:mb-36">
+            <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center text-cyan-400 tracking-tight relative after:content-[''] after:block after:w-16 after:h-1 after:bg-cyan-500 after:mx-auto after:mt-3 after:rounded-full">
+              技術スタック (SKILLS)
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {SKILLS.map((skill, index) => {
+                const Icon = skill.icon;
+                return (
+                  <div
+                    key={index}
+                    className="bg-gray-900 p-6 rounded-xl border border-teal-700/30 transition duration-300 hover:border-teal-400/50 hover:shadow-xl hover:shadow-teal-900/30"
+                  >
+                    <div className="flex items-center mb-4 border-b border-teal-900/50 pb-3">
+                      <Icon className="w-6 h-6 text-teal-400 mr-3" />
+                      <h3 className="text-xl font-bold text-teal-300">{skill.category}</h3>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {skill.tags.map((tag, i) => (
+                        <SkillTag key={i}>{tag}</SkillTag>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* --- 強みセクション --- */}
+          <section id="強み" className="mb-24 md:mb-36">
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-cyan-400 tracking-tight relative after:content-[''] after:block after:w-16 after:h-1 after:bg-cyan-500 after:mx-auto after:mt-3 after:rounded-full">
+              なぜ私を選ぶべきか (USP)
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* 強みカード 1 */}
+              <div className="bg-gray-900 p-8 rounded-xl border border-red-700/30 shadow-xl shadow-red-900/30">
+                <Lightbulb className="w-8 h-8 text-red-400 mb-4" />
+                <h3 className="text-2xl font-bold text-red-300 mb-3">若者トレンドの洞察力</h3>
+                <p className="text-gray-300 text-sm">
+                  現役学生として、<b>Z世代のユーザー行動や最新トレンドを肌で理解</b>しています。単に技術的に動くアプリではなく、<b>「今、ウケる」斬新なUI/UX</b>と機能設計を提供します。
+                </p>
+              </div>
+              {/* 強みカード 2 */}
+              <div className="bg-gray-900 p-8 rounded-xl border border-yellow-700/30 shadow-xl shadow-yellow-900/30">
+                <Zap className="w-8 h-8 text-yellow-400 mb-4" />
+                <h3 className="text-2xl font-bold text-yellow-300 mb-3">AI・コミュニティ連携の即戦力</h3>
+                <p className="text-gray-300 text-sm">
+                  <b>Gemini (AI)</b>、<b>LINE/Discord API</b>など、最先端の連携実績が豊富です。ただのWebサイトではなく、データを活用し、ユーザーと対話する<b>高度なアプリケーション</b>を構築します。
+                </p>
+              </div>
+              {/* 強みカード 3 */}
+              <div className="bg-gray-900 p-8 rounded-xl border border-cyan-700/30 shadow-xl shadow-cyan-900/30">
+                <Code className="w-8 h-8 text-cyan-400 mb-4" />
+                <h3 className="text-2xl font-bold text-cyan-300 mb-3">フルスタック一気通貫開発</h3>
+                <p className="text-gray-300 text-sm">
+                  Next.js, Python/FastAPI, TypeScript, PostgreSQL/MongoDBなど、<b>フロントエンドからバックエンド、デプロイ（Vercel）まで全て完結</b>。スピード感と品質を両立した開発が可能です。
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* --- 連絡先セクション --- */}
+          <section id="連絡先" className="mb-12">
+            <div className="bg-gray-900 p-8 md:p-12 rounded-xl border-4 border-double border-cyan-700/50 text-center shadow-2xl shadow-cyan-900/50">
+              <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-4">
+                ご依頼・ご相談 (CONTACT)
+              </h2>
+              <p className="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
+                お客様のアイデアを「斬新なアプリ」として形にするお手伝いをさせてください。
+                企画段階からでも、まずはお気軽にご連絡ください。
+              </p>
+              <div className="space-y-4">
+                <p className="text-xl font-mono text-cyan-200">
+                  お問い合わせ先: its.yuu.ohnuki@gmail.com
+                </p>
+              </div>
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </div>
+    </>
   );
-}
+};
+
+export default Home;
