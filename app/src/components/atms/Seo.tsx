@@ -9,9 +9,9 @@ interface SeoProps {
 }
 
 const Seo: React.FC<SeoProps> = ({
-    title = '[YOUR NAME].dev | デジタルの未来を、今、形にする。',
+    title = 'Yuu Ohnuki.dev | デジタルの未来を、今、形にする。',
     description = '若者の「今」をコード化し、未来を駆動するフルスタックデベロッパー。Next.js, Python, AI連携など最新技術で、あなたのアイデアを形にします。',
-    url = 'https://your-portfolio-url.com',
+    url = 'https://yuuohnuki-portfolio.vercel.app/',
     image = '/og-image.png',
 }) => (
     <Head>

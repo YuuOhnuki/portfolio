@@ -20,10 +20,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    // ポートフォリオのタイトル
     title: '若者の「今」をコード化 | Yuu Ohnuki',
 
-    // ページの説明 (SEO対策)
     description:
         'Next.js, Python, AI連携、LINE/Discordボット開発に特化したフルスタックエンジニアのポートフォリオ。Z世代のトレンドと技術力を融合させ、斬新なアプリケーションを開発します。',
 
@@ -42,12 +40,11 @@ export const metadata: Metadata = {
         'Z世代',
     ],
 
-    // 言語設定
     alternates: {
-        canonical: 'https://yuuohnuki-portfolio.vercel.app/', // 実際のドメインに置き換えてください
+        canonical: 'https://yuuohnuki-portfolio.vercel.app/',
     },
 
-    // OGP設定 (SNSでのシェア時など)
+    // OGP
     openGraph: {
         title: '若者の「今」をコード化 | Yuu Ohnuki',
         description: 'Z世代のトレンドと技術力を融合させた、モダンなWeb開発実績。',
