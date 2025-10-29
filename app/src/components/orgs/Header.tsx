@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
-const NAV_ITEMS = ['実績', 'スキル', '強み', '連絡先'];
+const NAV_ITEMS = ['実績', '成果物', 'スキル', '強み', '連絡先'];
 
 const Header: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);

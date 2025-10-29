@@ -17,8 +17,9 @@ import Footer from '../components/orgs/Footer';
 import ProjectCard from '../components/molcs/ProjectCard';
 import SkillTag from '../components/atms/SkillTag';
 import Seo from '../components/atms/Seo';
+import SectionTitle from '@/components/atms/SectionTitle';
+import WorkCard from '@/components/molcs/WorkCard';
 
-// --- データ定義 ---
 const SKILLS = [
     {
         category: 'Frontend',
@@ -79,6 +80,34 @@ const PROJECTS = [
     },
 ];
 
+const WORKS = [
+    {
+        title: 'RapidGen',
+        subtitle: 'AI画像生成スターターテンプレート',
+        description:
+            'AIで画像生成を行うWebアプリ。サーバー運用を簡略化し、誰でもAI画像生成アプリを構築できるようにOSS化。AI×Web開発のスターターベースとして公開。',
+        tech: ['Next.js', 'TypeScript', 'AI Image API', 'Vercel'],
+        links: {
+            site: 'https://rapid-gen.vercel.app/',
+            github: 'https://github.com/YuuOhnuki/RapidGen',
+        },
+        icon: Zap,
+        image: '/images/rapidgen.png',
+    },
+    {
+        title: '秘密の自習室',
+        subtitle: 'インフルエンサー公式サイト',
+        description:
+            'YouTubeやTikTokで活動する「秘密の自習室」公式サイトを制作・運用。Z世代に親和性の高いUIとミニマルなデザインを意識し、ブランドの世界観をWebで再現。',
+        tech: ['Next.js', 'Tailwind CSS', 'Vercel'],
+        links: {
+            site: 'https://secret-study-room.vercel.app/',
+        },
+        icon: Users,
+        image: '/images/secret-study.png',
+    },
+];
+
 const CATCHPHRASE = '若者の「今」をコード化し、未来を駆動するフルスタックデベロッパー';
 
 const Home: React.FC = () => {
@@ -89,7 +118,7 @@ const Home: React.FC = () => {
                 <Header />
                 <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
                     {/* ヒーローセクション */}
-                    <section id="hero" className="text-center mb-24 md:mb-36 pt-16">
+                    <section id="hero" className="scroll-mt-24 text-center mb-24 md:mb-36 pt-16">
                         <div className="inline-block bg-cyan-900/30 border border-cyan-700/50 rounded-full px-6 py-2 mb-4 text-xs font-mono text-cyan-400">
                             Next.js / Python / AI Integration
                         </div>
@@ -109,7 +138,7 @@ const Home: React.FC = () => {
                     </section>
 
                     {/* --- 実績セクション --- */}
-                    <section id="実績" className="mb-24 md:mb-36">
+                    <section id="実績" className="scroll-mt-24 mb-24 md:mb-36">
                         <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-cyan-400 tracking-tight relative after:content-[''] after:block after:w-16 after:h-1 after:bg-cyan-500 after:mx-auto after:mt-3 after:rounded-full">
                             プロジェクト実績 (PROJECTS)
                         </h2>
@@ -120,8 +149,18 @@ const Home: React.FC = () => {
                         </div>
                     </section>
 
+                    {/* --- 成果物セクション --- */}
+                    <section id="成果物" className="scroll-mt-24 mb-24 md:mb-36">
+                        <SectionTitle>成果物 (WORKS)</SectionTitle>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                            {WORKS.map((work, index) => (
+                                <WorkCard key={index} work={work} index={index} />
+                            ))}
+                        </div>
+                    </section>
+
                     {/* --- スキルマトリックスセクション --- */}
-                    <section id="スキル" className="mb-24 md:mb-36">
+                    <section id="スキル" className="scroll-mt-24 mb-24 md:mb-36">
                         <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center text-cyan-400 tracking-tight relative after:content-[''] after:block after:w-16 after:h-1 after:bg-cyan-500 after:mx-auto after:mt-3 after:rounded-full">
                             技術スタック (SKILLS)
                         </h2>
@@ -149,7 +188,7 @@ const Home: React.FC = () => {
                     </section>
 
                     {/* --- 強みセクション --- */}
-                    <section id="強み" className="mb-24 md:mb-36">
+                    <section id="強み" className="scroll-mt-24 mb-24 md:mb-36">
                         <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-cyan-400 tracking-tight relative after:content-[''] after:block after:w-16 after:h-1 after:bg-cyan-500 after:mx-auto after:mt-3 after:rounded-full">
                             なぜ私を選ぶべきか (USP)
                         </h2>
@@ -191,7 +230,7 @@ const Home: React.FC = () => {
                     </section>
 
                     {/* --- 連絡先セクション --- */}
-                    <section id="連絡先" className="mb-12">
+                    <section id="連絡先" className="scroll-mt-24 mb-12">
                         <div className="bg-gray-900 p-8 md:p-12 rounded-xl border-4 border-double border-cyan-700/50 text-center shadow-2xl shadow-cyan-900/50">
                             <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-4">
                                 ご依頼・ご相談 (CONTACT)
