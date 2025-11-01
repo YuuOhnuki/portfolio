@@ -106,6 +106,19 @@ const WORKS = [
         icon: Users,
         image: '/images/secret-study.png',
     },
+    {
+        title: 'Synchronauts',
+        subtitle: '会話から性格タイプを推定し、あなたに合わせた短編物語を自動生成',
+        description:
+            'MBTIの4軸に基づく簡易診断（チャット）でタイプを推定し、約400〜600文字の短編ストーリーを生成するWebアプリ。登録不要・無料で、共有リンクにも対応。',
+        tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+        links: {
+            site: 'https://synchronauts.vercel.app/',
+            github: 'https://github.com/YuuOhnuki/synchronauts',
+        },
+        icon: BookOpen,
+        image: '/images/synchronauts.png',
+    },
 ];
 
 const CATCHPHRASE = '若者の「今」をコード化し、未来を駆動するフルスタックデベロッパー';
@@ -152,7 +165,7 @@ const Home: React.FC = () => {
                     {/* --- 成果物セクション --- */}
                     <section id="成果物" className="scroll-mt-24 mb-24 md:mb-36">
                         <SectionTitle>成果物 (WORKS)</SectionTitle>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {WORKS.map((work, index) => (
                                 <WorkCard key={index} work={work} index={index} />
                             ))}
