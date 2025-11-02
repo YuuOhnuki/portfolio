@@ -119,6 +119,19 @@ const WORKS = [
         icon: BookOpen,
         image: '/images/synchronauts.png',
     },
+    {
+        title: 'UniNavi',
+        subtitle: 'AI大学ナビゲーションプラットフォーム',
+        description:
+            'Next.js 16 + React 19 を基盤に、学生が進学先を検索・比較できる AI サポート型の大学ナビゲーションツール。Tailwind CSS v4 と shadcn/ui を活用したモダンな UI/UX に加え、バックエンドの FastAPI と Hugging Face / Tavily / Serper API を組み合わせることで、最新の入試情報と AI チャット機能を提供。',
+        tech: ['Next.js', 'TypeScript', 'React', 'FastAPI', 'Hugging Face', 'Tailwind CSS', 'shadcn/ui'],
+        links: {
+            site: 'https://uninavi.vercel.app/',
+            github: 'https://github.com/YuuOhnuki/uninavi',
+        },
+        icon: BookOpen,
+        image: '/images/uninavi.png',
+    },
 ];
 
 const CATCHPHRASE = '若者の「今」をコード化し、未来を駆動するフルスタックデベロッパー';
