@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Twitter } from 'lucide-react';
+import { Mail, Github, BookText, PenTool, ExternalLink } from 'lucide-react';
 
 const Contact: React.FC = () => {
     return (
@@ -44,9 +44,14 @@ const Contact: React.FC = () => {
                         <Github className="w-5 h-5 md:w-6 md:h-6" />
                     </div>
                 </a>
-                <a href="https://github.com/YuuOhnuki" target="_blank" rel="noopener noreferrer" className="group">
+                <a href="https://zenn.dev/ohnukiyuu" target="_blank" rel="noopener noreferrer" className="group">
                     <div className="p-3 md:p-4 bg-black/60 border border-white/10 rounded-full group-hover:bg-white group-hover:text-black transition-all duration-300 backdrop-blur-md">
-                        <Github className="w-5 h-5 md:w-6 md:h-6" />
+                        <BookText className="w-5 h-5 md:w-6 md:h-6" />
+                    </div>
+                </a>
+                <a href="https://note.com/yuu_0814" target="_blank" rel="noopener noreferrer" className="group">
+                    <div className="p-3 md:p-4 bg-black/60 border border-white/10 rounded-full group-hover:bg-white group-hover:text-black transition-all duration-300 backdrop-blur-md">
+                        <PenTool className="w-5 h-5 md:w-6 md:h-6" />
                     </div>
                 </a>
             </div>
