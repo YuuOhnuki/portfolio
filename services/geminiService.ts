@@ -1,25 +1,20 @@
 import { GoogleGenAI, Chat } from '@google/genai';
+import { GEMINI_SYSTEM_INSTRUCTION } from '../constants';
 import { profileService } from './profileService';
-import { getCachedDynamicPrompt } from './promptService';
 
 let chatSession: Chat | null = null;
 
-export const initializeChat = async () => {
+export const initializeChat = () => {
     try {
         if (!process.env.API_KEY) {
             console.error('API_KEY is missing');
             return null;
         }
-
         const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
-        // 動的システムプロンプトを取得
-        const dynamicSystemInstruction = await getCachedDynamicPrompt();
-
         chatSession = ai.chats.create({
             model: 'gemini-2.5-flash',
             config: {
-                systemInstruction: dynamicSystemInstruction,
+                systemInstruction: GEMINI_SYSTEM_INSTRUCTION,
             },
         });
         return chatSession;
@@ -31,7 +26,7 @@ export const initializeChat = async () => {
 
 export const sendMessageToGemini = async (message: string): Promise<string> => {
     if (!chatSession) {
-        chatSession = await initializeChat();
+        chatSession = initializeChat();
     }
 
     if (!chatSession) {

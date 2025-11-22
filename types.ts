@@ -27,34 +27,3 @@ export enum SectionId {
     WORKS = 2,
     CONTACT = 3,
 }
-
-export interface GitHubActivity {
-    type: 'commit' | 'repository';
-    title: string;
-    url: string;
-    timestamp: string;
-    repository?: string;
-}
-
-export interface QiitaActivity {
-    type: 'article';
-    title: string;
-    url: string;
-    timestamp: string;
-    tags: string[];
-}
-
-export interface ZennActivity {
-    type: 'article' | 'scrap';
-    title: string;
-    url: string;
-    timestamp: string;
-    contentType: string;
-}
-
-export interface ActivityData {
-    github: GitHubActivity[];
-    qiita: QiitaActivity[];
-    zenn: ZennActivity[];
-    lastUpdated: string;
-}
