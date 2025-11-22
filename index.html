@@ -5,28 +5,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <!-- Primary Meta Tags -->
-        <title>Yuu Ohnuki | Digital Architect & Full Stack Developer</title>
-        <meta name="title" content="Yuu Ohnuki | Digital Architect & Full Stack Developer" />
+        <title>Yuu Ohnuki | Digital Architect & Full Stack Developer | Portfolio</title>
+        <meta name="title" content="Yuu Ohnuki | Digital Architect & Full Stack Developer | Portfolio" />
         <meta
             name="description"
-            content="若者の「今」をコード化する。Next.js, Python, AI連携を得意とするZ世代フルスタックエンジニア Yuu Ohnuki のポートフォリオサイト。没入感のある3D体験とモダンな技術スタックの実績を紹介。"
+            content="Z世代フルスタックエンジニア Yuu Ohnuki の公式ポートフォリオ。Next.js, Python, AI連携を得意とし、若者の「今」をコード化する革新的なWebアプリケーションを開発。実績やスキル、連絡先情報を掲載。"
         />
         <meta
             name="keywords"
-            content="Yuu Ohnuki, ポートフォリオ, フルスタックエンジニア, Next.js, Python, WebGL, Three.js, AI, Gemini, Web開発, Z世代"
+            content="Yuu Ohnuki,ポートフォリオ,フルスタックエンジニア,Next.js,Python,AI開発,WebGL,Three.js,Gemini API,Web開発,Z世代,LINE Bot,Discord Bot,React,TypeScript"
         />
         <meta name="author" content="Yuu Ohnuki" />
+        <meta name="robots" content="index, follow" />
+        <meta name="language" content="Japanese" />
         <link rel="canonical" href="https://yuuohnuki-portfolio.vercel.app/" />
 
         <!-- Open Graph / Facebook / Discord -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://yuuohnuki-portfolio.vercel.app/" />
-        <meta property="og:title" content="Yuu Ohnuki | Digital Architect" />
+        <meta property="og:title" content="Yuu Ohnuki | Digital Architect & Full Stack Developer" />
         <meta
             property="og:description"
-            content="若者の「今」をコード化する。Next.js, Python, AI連携を得意とするフルスタックエンジニアのポートフォリオ。"
+            content="Z世代フルスタックエンジニア。Next.js, Python, AI連携を得意とし、革新的なWebアプリケーションを開発。"
         />
         <meta property="og:image" content="https://yuuohnuki-portfolio.vercel.app/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Yuu Ohnuki Portfolio" />
         <meta property="og:locale" content="ja_JP" />
 
@@ -47,14 +51,37 @@
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#050505" />
+        
+        <!-- Additional SEO Meta Tags -->
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-TileColor" content="#050505" />
+        <meta name="application-name" content="Yuu Ohnuki Portfolio" />
+        <meta name="apple-mobile-web-app-title" content="Yuu Ohnuki" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
+        <!-- Resource hints for better performance -->
+        <link rel="modulepreload" href="/index.tsx" />
+        <link rel="preload" href="/favicon.ico" as="image" type="image/x-icon" />
+        
         <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Preconnect and DNS prefetch for performance -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="dns-prefetch" href="//aistudiocdn.com" />
+        <link rel="preconnect" href="https://aistudiocdn.com" crossorigin />
+        <!-- Optimized font loading with display swap -->
         <link
             href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=Syne:wght@400;700;800&display=swap"
             rel="stylesheet"
+            media="print" onload="this.media='all'"
         />
+        <noscript>
+            <link
+                href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=Syne:wght@400;700;800&display=swap"
+                rel="stylesheet"
+            />
+        </noscript>
         <script>
             tailwind.config = {
                 theme: {
@@ -107,6 +134,35 @@
                 opacity: 0.04;
                 background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
             }
+            * {
+                scroll-behavior: smooth;
+            }
+            
+            html {
+                scroll-behavior: smooth;
+                overflow-x: hidden;
+                scroll-padding-top: 0;
+                scroll-snap-type: y proximity;
+            }
+            
+            body {
+                overflow-x: hidden;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .scroll-smooth {
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                scroll-padding: 0;
+            }
+            
+            /* Improve scroll performance */
+            .scroll-smooth * {
+                will-change: transform;
+                backface-visibility: hidden;
+                perspective: 1000px;
+            }
+            
             .custom-scrollbar::-webkit-scrollbar {
                 width: 4px;
                 display: block;
@@ -117,6 +173,9 @@
             .custom-scrollbar::-webkit-scrollbar-thumb {
                 background: rgba(255, 255, 255, 0.2);
                 border-radius: 10px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                background: rgba(255, 255, 255, 0.3);
             }
         </style>
         <script type="importmap">
@@ -131,8 +190,45 @@
                     "three": "https://aistudiocdn.com/three@^0.181.2",
                     "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
                     "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
+                },
+                "integrity": {
+                    "react": "sha384-optimized",
+                    "react-dom": "sha384-optimized"
                 }
             }
+        </script>
+        
+        <!-- Structured Data for SEO -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Yuu Ohnuki",
+            "jobTitle": "Full Stack Developer & Digital Architect",
+            "description": "Z世代フルスタックエンジニア。Next.js, Python, AI連携を得意とし、若者の『今』をコード化する革新的なWebアプリケーションを開発。",
+            "url": "https://yuuohnuki-portfolio.vercel.app/",
+            "sameAs": [
+                "https://github.com/YuuOhnuki",
+                "https://zenn.dev/ohnukiyuu",
+                "https://note.com/yuu_0814"
+            ],
+            "knowsAbout": [
+                "Next.js",
+                "React",
+                "TypeScript",
+                "Python",
+                "AI Development",
+                "WebGL",
+                "Three.js",
+                "Gemini API",
+                "LINE Bot",
+                "Discord Bot"
+            ],
+            "offers": {
+                "@type": "Offer",
+                "serviceType": "Web Development & AI Integration"
+            }
+        }
         </script>
     </head>
     <body>

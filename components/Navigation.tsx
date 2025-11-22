@@ -8,12 +8,14 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) => {
     return (
-        <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-6">
+        <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-6" role="navigation" aria-label="ページセクション">
             {SECTIONS.map((label, index) => (
-                <div
+                <button
                     key={index}
-                    className="group relative flex items-center justify-end cursor-pointer"
+                    className="group relative flex items-center justify-end cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-black rounded-full p-1"
                     onClick={() => onNavigate(index)}
+                    aria-label={`${label}セクションへ移動`}
+                    aria-current={activeSection === index ? 'true' : 'false'}
                 >
                     <span
                         className={`absolute right-8 text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
@@ -31,7 +33,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
                                 : 'bg-transparent border-gray-600 hover:border-gray-400'
                         }`}
                     />
-                </div>
+                </button>
             ))}
         </div>
     );

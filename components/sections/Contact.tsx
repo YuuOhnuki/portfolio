@@ -1,42 +1,103 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, BookText, PenTool, ExternalLink } from 'lucide-react';
+import { Github, BookText, PenTool, ArrowDown, Mail, Zap } from 'lucide-react';
+import { useState } from 'react';
 
 const Contact: React.FC = () => {
+    const [isHovered, setIsHovered] = useState(false);
     return (
         <div className="w-full min-h-full flex flex-col justify-center items-center px-4 text-center relative py-20">
+            {/* LET'S BUILD THE FUTURE Section */}
             <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.8 }}
-                className="mb-8 md:mb-12 relative z-10 p-8 rounded-3xl bg-black/70 backdrop-blur-xl border border-white/5"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                className="z-10 max-w-4xl mx-auto text-center mb-12"
             >
-                {/* Decorative blur behind text */}
-                <div className="absolute inset-0 bg-cyan-500/5 blur-[60px] md:blur-[100px] rounded-full pointer-events-none" />
+                <motion.div className="relative mb-8" whileHover={{ scale: 1.02 }} transition={{ duration: 0.3 }}>
+                    <motion.h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter font-syne mb-4">
+                        <motion.span
+                            className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 block mb-2"
+                            animate={{
+                                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                            }}
+                            transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+                            style={{
+                                backgroundSize: '200% 200%',
+                            }}
+                        >
+                            LET'S BUILD
+                        </motion.span>
+                        <motion.span
+                            className="text-white block"
+                            animate={{
+                                opacity: [0.8, 1, 0.8],
+                            }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                        >
+                            THE FUTURE
+                        </motion.span>
+                    </motion.h2>
 
-                <h2 className="text-4xl sm:text-6xl md:text-9xl font-bold mb-4 md:mb-8 font-syne tracking-tighter relative drop-shadow-2xl">
-                    LET'S <span className="text-stroke-white text-transparent">BUILD</span>
-                    <br />
-                    THE <span className="text-cyan-400">FUTURE</span>
-                </h2>
+                    {/* Animated underline */}
+                    <motion.div
+                        className="h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: '100%' }}
+                        transition={{ delay: 1.2, duration: 0.8 }}
+                    />
+                </motion.div>
 
-                <p className="text-gray-300 text-sm md:text-xl max-w-xs md:max-w-2xl mx-auto font-light relative px-2 drop-shadow-md">
+                {/* Service description */}
+                <motion.p
+                    className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed font-light max-w-2xl mx-auto"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 1.4, duration: 0.8 }}
+                >
                     お客様のアイデアを「斬新なアプリ」として形にします。
-                    <br className="hidden md:block" />
+                    <br />
                     企画段階からでも、まずはお気軽にご連絡ください。
-                </p>
-            </motion.div>
+                </motion.p>
 
-            <motion.a
-                href="mailto:its.yuu.ohnuki@gmail.com"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="z-10 px-6 py-3 md:px-10 md:py-5 bg-white text-black text-sm md:text-lg font-bold rounded-full hover:bg-cyan-400 transition-colors mb-12 md:mb-16 shadow-[0_0_30px_rgba(255,255,255,0.2)] flex items-center gap-2 md:gap-3"
-            >
-                <Mail className="w-4 h-4 md:w-5 md:h-5" />
-                <span className="hidden sm:inline">its.yuu.ohnuki@gmail.com</span>
-                <span className="sm:hidden">Email Me</span>
-            </motion.a>
+                {/* CTA Button */}
+                <motion.div
+                    className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.6, duration: 0.8 }}
+                >
+                    <motion.a
+                        href="mailto:its.yuu.ohnuki@gmail.com"
+                        className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.98 }}
+                        onHoverStart={() => setIsHovered(true)}
+                        onHoverEnd={() => setIsHovered(false)}
+                    >
+                        {/* Animated background */}
+                        <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500"
+                            initial={{ x: '-100%' }}
+                            animate={{ x: isHovered ? '0%' : '-100%' }}
+                            transition={{ duration: 0.3 }}
+                        />
+
+                        {/* Button content */}
+                        <div className="relative flex items-center gap-3">
+                            <Mail className="w-5 h-5" />
+                            <span className="text-lg">its.yuu.ohnuki@gmail.com</span>
+                        </div>
+
+                        {/* Glow effect */}
+                        <motion.div
+                            className="absolute inset-0 bg-white/20 blur-md"
+                            animate={{ opacity: isHovered ? 0.3 : 0 }}
+                            transition={{ duration: 0.3 }}
+                        />
+                    </motion.a>
+                </motion.div>
+            </motion.div>
 
             <div className="flex gap-4 md:gap-6 z-10 mb-16 md:mb-0">
                 <a href="https://github.com/YuuOhnuki" target="_blank" rel="noopener noreferrer" className="group">
